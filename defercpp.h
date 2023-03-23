@@ -1,10 +1,12 @@
 #pragma once
 
+namespace metafunc
+{
 template <class FunctionType>
 class DeferFunc
 {
 public:
-    DeferFunc(FunctionType f) :
+    explicit DeferFunc(FunctionType f) :
         f(f) { }
     ~DeferFunc() { f(); }
 
@@ -23,3 +25,6 @@ std::unique_ptr<DeferFunc<FunctionType>> deferFunc(FunctionType f)
 
 #define defer(x) \
     auto CONCAT(defer_, __COUNTER__) = deferFunc([&]() { x(); })
+
+} // namespace metafunc
+
