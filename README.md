@@ -9,6 +9,8 @@ Example
 
 int main()
 {
+    using namespace metafunc;
+    
     auto print1 = []() { std::cout << 1 << std::endl; };
     auto print3 = []() { std::cout << 3 << std::endl; };
 
